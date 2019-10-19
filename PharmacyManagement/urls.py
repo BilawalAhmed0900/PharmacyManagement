@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('Pharmacy.urls')),
     path('admin/', admin.site.urls),
+    path('', include('django.contrib.auth.urls')),
 ]
