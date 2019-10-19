@@ -1,4 +1,13 @@
 <!-- templates/registration/login.html -->
+{% load static %}
+<style>
+body
+    {
+        background-image:url( "{% static 'login_back.png' %}");
+        background-repeat:no-repeat;
+        background-size:100%;
+    }
+</style>
 <h2>Login</h2>
 <form method="post">
   {% csrf_token %}
