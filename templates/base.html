@@ -1,0 +1,25 @@
+{% load static %}
+<style>
+body
+{
+    background-image:url( "{% static 'login_back.png' %}");
+    background-repeat:no-repeat;
+    background-size:100%;
+}
+
+div.box
+{
+    margin: 5px;
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.75);
+    position: absolute;
+}
+{% block style %}
+{% endblock %}
+</style>
+<td style="width:100%; height:100%;">
+    <div class="box">
+        {% block content %}
+        {% endblock %}
+    </div>
+</td>

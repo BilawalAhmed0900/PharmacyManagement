@@ -1,35 +1,23 @@
-<!-- templates/registration/login.html -->
-{% load static %}
-<style>
-body
-{
-    background-image:url( "{% static 'login_back.png' %}");
-    background-repeat:no-repeat;
-    background-size:100%;
-}
+{% extends 'base.html' %}
 
+{% block style %}
 div.box
 {
-    margin: 5px;
-    border: 1px solid black;
-    background: rgba(255, 255, 255, 0.6);
-    position: absolute;
     top: 30%;
     left: 35%;
     width: 35%;
 	height: 35%;
 }
-</style>
-<td style="width:100%; height:100%;">
-    <div class="box">
-        <h2 style=" position:absolute;top: 7%; left: 45%;">Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            <label for="username" style="position:absolute;top: 30%; left: 25%;">Username: </label>
-            <label for="password" style="position:absolute;top: 40%; left: 25%;">Password: </label>
-            <input id="username" type="text" name="username" value="" style="position:absolute;top: 30%; left: 45%;">
-            <input type="password" id="password" name="password" value="" style="position:absolute;top: 40%; left: 45%;">
-            <input type="submit" value="OK" style="position:absolute;top: 55%; left: 45%;">
-        </form>
-    </div>
-</td>
+{% endblock %}
+
+{% block content %}
+<h2 style=" position:absolute;top: 7%; left: 45%;">Login</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="username" style="position:absolute;top: 30%; left: 25%;">Username: </label>
+    <label for="password" style="position:absolute;top: 40%; left: 25%;">Password: </label>
+    <input type="text"     id="username" name="username" value="" style="position:absolute;top: 30%; left: 45%;">
+    <input type="password" id="password" name="password" value="" style="position:absolute;top: 40%; left: 45%;">
+    <input type="submit" value="OK" style="position:absolute;top: 55%; left: 45%;">
+</form>
+{% endblock %}

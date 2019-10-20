@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block style %}
+div.box
+{
+    top: 0%;
+    left: 15%;
+    width: 70%;
+	height: 100%;
+}
+
+table
+{
+    top: 20%;
+    left: 25%;
+    width: 50%;
+    position: absolute;
+}
+
+table, th, td
+{
+    border: 1px solid black;
+}
+{% endblock %}
+
+{% block content %}
+<h2 style=" position:absolute;top: 7%; left: 40%;">Search Medicines</h2>
+<form action="/home/" method="post">
+    {% csrf_token %}
+    <label for="medicine_name" style="position:absolute;top: 15%; left: 32%;">Medicine Name: </label>
+    <input type="text"     id="medicine_name" name="medicine_name" value="" style="position:absolute;top: 15%; left: 45%;">
+    <input type="submit" value="OK" style="position:absolute;top: 15%; left: 62%;">
+</form>
+
+{% if data %}
+<table>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Price</th>
+</tr>
+    {% for obj in data %}
+        <tr>
+            <th>{{ obj.name }}</th>
+            <th>{{ obj.medicine_type }}</th>
+            <th>{{ obj.retail_price }}</th>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}
