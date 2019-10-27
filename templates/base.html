@@ -1,4 +1,6 @@
 {% load static %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
 <style>
 body
 {
@@ -14,6 +16,12 @@ div.box
     background: rgba(255, 255, 255, 0.75);
     position: absolute;
 }
+
+.button
+{
+    background-color: #ffffff;
+    border-radius: 4px;
+}
 {% block style %}
 {% endblock %}
 </style>
@@ -23,3 +31,8 @@ div.box
         {% endblock %}
     </div>
 </td>
+
+{% if user.is_authenticated %}
+<a href="/logout/" style="float: right; margin-right: 1%; margin-top: 1%; background: white; border-radius: 4px;
+           border: 1px solid black; width: 60px; text-align: center; color: black">Logout</a>
+{% endif %}

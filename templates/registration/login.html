@@ -11,13 +11,13 @@ div.box
 {% endblock %}
 
 {% block content %}
-<h2 style=" position:absolute;top: 7%; left: 45%;">Login</h2>
+<h2 style=" text-align: center; margin-top: 2%">Login</h2>
 <form method="post">
     {% csrf_token %}
     <label for="username" style="position:absolute;top: 30%; left: 25%;">Username: </label>
-    <label for="password" style="position:absolute;top: 40%; left: 25%;">Password: </label>
+    <label for="password" style="position:absolute;top: 45%; left: 25%;">Password: </label>
     <input type="text"     id="username" name="username" value="" style="position:absolute;top: 30%; left: 45%;">
-    <input type="password" id="password" name="password" value="" style="position:absolute;top: 40%; left: 45%;">
-    <input type="submit" value="OK" style="position:absolute;top: 55%; left: 45%;">
+    <input type="password" id="password" name="password" value="" style="position:absolute;top: 45%; left: 45%;">
+    <input class = "button" type="submit" value="Login" style="position: absolute; text-align: center; width:100px; left:40%; top: 70%">
 </form>
 {% endblock %}
