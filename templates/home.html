@@ -44,8 +44,8 @@ tr: hover
 <form action="/home/" method="post">
     {% csrf_token %}
     <label for="medicine_name" style="position:absolute;top: 15%; left: 32%;">Medicine Name: </label>
-    <input type="text"     id="medicine_name" name="medicine_name" value="" style="position:absolute;top: 15%; left: 45%;">
-    <input class="button" type="submit" value="OK" style="position:absolute;top: 15%; left: 63%; width: 50px;">
+    <input type="text"     id="medicine_name" name="medicine_name" value="" style="position:absolute;top: 15%; left: 45%; width: 200px">
+    <input class="button" type="submit" value="Search" style="position:absolute;top: 15%; left: 65%; width: 100px;">
 </form>
 
 {% if data %}
@@ -106,13 +106,11 @@ function send_data(name, price, numbers)
         }
 
     }
-
     else
     {
         cart = [currentItem];
     }
 
-    console.log(cart);
     session.setItem(cart_id, JSON.stringify(cart));
 }
 </script>
