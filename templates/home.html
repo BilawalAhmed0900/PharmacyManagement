@@ -68,11 +68,53 @@ tr: hover
                 <td>Unknown</td>
             {% endif %}
             <td>{{ obj.retail_price }}</td>
-            <td><input type="number" name="Quantity" min="1" max="{{ obj.stock }}" value="1"></td>
-            <td><button class="button" type=button>+</button></td>
+            <td><input type="number" id="Quantity" min="1" max="{{ obj.stock }}" value="1"></td>
+            <td><button class="button" type=button
+                        onclick="send_data('{{ obj.name }}', '{{ obj.retail_price }}', document.getElementById('Quantity').value)"
+            >+</button></td>
         </tr>
     {% endfor %}
 </table>
 {% endif %}
+
+<script>
+session = window.sessionStorage;
+let cart_id = 'cart_07a67e76-3bea-4e31-9b5e-949196880f04';
+function send_data(name, price, numbers)
+{
+    let currentItem = {'name': name, 'price': price, 'n': numbers};
+    let item = session.getItem(cart_id);
+    let cart;
+    if (item != 'null')
+    {
+        cart = JSON.parse(item);
+        let has_found = false;
+        for (item of cart)
+        {
+            if (item.name === name)
+            {
+                item.n = (parseInt(item.n) + parseInt(numbers)).toString();
+                has_found = true;
+                break;
+            }
+        }
+
+
+        if (!has_found)
+        {
+            cart = cart.concat([currentItem]);
+        }
+
+    }
+
+    else
+    {
+        cart = [currentItem];
+    }
+
+    console.log(cart);
+    session.setItem(cart_id, JSON.stringify(cart));
+}
+</script>
 
 {% endblock %}
